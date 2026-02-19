@@ -40,9 +40,6 @@ mod = pre.model(name='rigid', physics='MECAx', element='Rxx2D', dimension=dim)
 mods.addModel(mod)
 
 
-
-
-
 def extract_polyline_points(dxf_file):
     # Load the DXF document
     doc = ezdxf.readfile(dxf_file)
@@ -68,29 +65,6 @@ polyline_groups = extract_polyline_points(dxf_file)
 #for i, group in enumerate(polyline_groups):
 #    print(f"Polyline {i+1}: {group}")
     
-#print (polyline_groups[1305])
-
-
-##vertices=numpy.zeros([4, 2], 'd')
-##vertices[0, 0]=polyline_groups[0][0][0]
-##print (vertices[0, 0])
-##vertices[0, 1]=polyline_groups[0][0][1]
-##print (vertices[0, 1])
-##vertices[1, 0]=polyline_groups[0][1][0]
-##print (vertices[1, 0])
-##vertices[1, 1]=polyline_groups[0][1][1]
-##print (vertices[1, 1])
-##vertices[2, 0]=polyline_groups[0][2][0]
-##print (vertices[2, 0])
-##vertices[2, 1]=polyline_groups[0][2][1]
-##print (vertices[2, 1])
-##vertices[3, 0]=polyline_groups[0][3][0]
-##print (vertices[3, 0])
-##vertices[3, 1]=polyline_groups[0][3][1]
-##print (vertices[3, 1])
-
-
-
 for i in range(0,len(polyline_groups)):
 
     vertices=numpy.zeros([4, 2], 'd')
@@ -102,11 +76,7 @@ for i in range(0,len(polyline_groups)):
     vertices[2, 1]=polyline_groups[i][2][1]
     vertices[3, 0]=polyline_groups[i][3][0]
     vertices[3, 1]=polyline_groups[i][3][1]
-
-
-
     block = pre.rigidPolygon(model=mod, material=brick, center=numpy.array([0., 0.]), color='REDxx', generation_type='full',vertices=vertices)
-
     bodies.addAvatar(block)
 
 
